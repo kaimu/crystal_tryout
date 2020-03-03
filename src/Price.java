@@ -10,7 +10,7 @@ class Price {
     final String productCode;
     final int number;
     final int depart;
-    // В реальной жизни, верятно, потребовался бы публичный getter для `begin` и `end`
+    // В реальной жизни, вероятно, потребовался бы публичный getter для `begin` и `end`
     protected Date begin;
     protected Date end;
     final long value;
@@ -96,9 +96,9 @@ class Price {
             var pricesToAdd = new ArrayList<Price>();
             pricesToAdd.add(newPrice);
             for (Price existingPrice : pricesWithinNumber) {
+                // Если цены не пересекаются в периодах действия, переходим к след. имеющейся цене
                 if (newPrice.begin.after(existingPrice.end) || newPrice.begin.equals(existingPrice.end)
                         || newPrice.end.before(existingPrice.begin) || newPrice.end.equals(existingPrice.begin)) {
-                    // Если цены не пересекаются в периодах действия, переходим к след. имеющейся цене
                     continue;
                 }
                 // Если имеющаяся цена пересекается в периоде действия с новой ценой, и значения цен одинаковы,
